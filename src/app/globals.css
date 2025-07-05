@@ -1,0 +1,427 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #1f1c2c, #928dab);
+  min-height: 100vh;
+  padding: 40px;
+  color: #fff;
+}
+
+.main-div {
+  max-width: 1100px;
+  margin: auto;
+  background-color: #1e1e2f;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #f9f9f9;
+  text-align: center;
+}
+
+.file-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.file-items {
+  background-color: #2d2d44;
+  border-radius: 10px;
+  padding: 15px 10px;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.file-items:hover {
+  transform: translateY(-5px);
+  background-color: #3a3a5a;
+}
+
+.item-image {
+  width: 50px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 2px #00000050);
+}
+
+.file-name {
+  font-size: 14px;
+  color: #f1f1f1;
+  word-break: break-word;
+}
+
+.loader {
+  margin: 40px auto;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top: 6px solid #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+#heading button {
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+#heading button:hover {
+  background: linear-gradient(135deg, #2d2a42, #a5a0b0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+#heading button:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ───────────── File Viewer ───────────── */
+.file-viewer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 30px;
+  padding: 24px;
+  background: #1f1f2e;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.file-content {
+  flex: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.file-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.file-header h2 {
+  color: #f8f8f8;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.open-raw {
+  background: #2e86de;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.open-raw:hover {
+  background: #1e72c3;
+}
+
+.code-block {
+  background-color: #12121b;
+  color: #e6e6e6;
+  padding: 18px;
+  border-radius: 12px;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  overflow-x: auto;
+  max-height: 400px;
+  line-height: 1.6;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.6);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* ───────────── Commit Info ───────────── */
+.file-info {
+  flex: 1;
+  min-width: 0;
+  background: #2a2a3b;
+  border-radius: 12px;
+  padding: 20px;
+  color: #f1f1f1;
+}
+
+.file-info h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 6px;
+}
+
+.commit-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.commit-msg {
+  font-style: italic;
+  font-size: 14px;
+  color: #c1c1c1;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #555;
+}
+
+.commit-date {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #444;
+}
+
+/* ───────────── Input Bar ───────────── */
+.repo-input-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.repo-input-bar input {
+  flex: 1;
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a2a3b;
+  color: #f1f1f1;
+  outline: none;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.repo-input-bar input::placeholder {
+  color: #bbb;
+}
+
+.repo-input-bar button {
+  background-color: #1f78ff;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.repo-input-bar button:hover {
+  background-color: #155fd4;
+}
+
+/* ───────────── Media Queries ───────────── */
+
+@media (max-width: 1024px) {
+  .file-viewer {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .file-content,
+  .file-info {
+    flex: 1 1 100%;
+  }
+
+  .file-header h2 {
+    font-size: 16px;
+  }
+
+  .open-raw {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .code-block {
+    font-size: 13px;
+    padding: 14px;
+  }
+
+  .file-info h3 {
+    font-size: 15px;
+  }
+
+  .commit-msg {
+    font-size: 13px;
+  }
+
+  .commit-date {
+    font-size: 11px;
+  }
+
+  .author img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-div {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  #heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #heading button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .repo-input-bar {
+    flex-direction: column;
+  }
+
+  .repo-input-bar input,
+  .repo-input-bar button {
+    width: 100%;
+  }
+
+  .file-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+  }
+
+  .file-items {
+    padding: 10px 8px;
+  }
+
+  .file-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .file-header h2 {
+    font-size: 14px;
+  }
+
+  .open-raw {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+
+  .file-info h3 {
+    font-size: 14px;
+  }
+
+  .commit-msg {
+    font-size: 13px;
+  }
+
+  .commit-date {
+    font-size: 11px;
+  }
+
+  .repo-input-bar input {
+    font-size: 14px;
+  }
+
+  .repo-input-bar button {
+    font-size: 14px;
+  }
+
+  .author img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.repo-info {
+  margin-bottom: 30px;
+  background-color: #29293d;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.repo-info h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #ffd369;
+}
+
+.repo-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.repo-meta p {
+  font-size: 15px;
+  line-height: 1.4;
+  color: #f1f1f1;
+}
